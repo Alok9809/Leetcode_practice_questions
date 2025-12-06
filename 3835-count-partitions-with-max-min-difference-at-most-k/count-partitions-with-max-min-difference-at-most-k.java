@@ -1,6 +1,6 @@
 class Solution {
     public int countPartitions(int[] nums, int k) {
-        int n = nums.length, MOD = 1_000_000_007;
+        int n = nums.length, MOD = (int) 1e9 + 7;
         long[] dp = new long[n + 1];
         dp[0] = 1;
 
