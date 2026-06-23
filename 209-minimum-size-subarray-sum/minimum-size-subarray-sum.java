@@ -7,8 +7,9 @@ class Solution {
             sum+=nums[high];
             while(sum>=target){
                 max = Math.min(max,high-low+1);
+                sum-=nums[low];
                 low++;
-                sum-=nums[low-1];
+                
             }
             high++;
         }
