@@ -7,7 +7,7 @@ class Solution {
         while(j<s.length()){
             map.put(s.charAt(j),map.getOrDefault(s.charAt(j),0)+1);
             maxWin = Math.max(maxWin,map.get(s.charAt(j)));
-            while(j-i+1-maxWin>k){
+        if(j-i+1-maxWin>k){
                 map.put(s.charAt(i),map.get(s.charAt(i))-1);
                 i++;
             }
