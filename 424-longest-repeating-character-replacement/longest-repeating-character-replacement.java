@@ -2,7 +2,7 @@ class Solution {
     public int characterReplacement(String s, int k) {
         int i = 0,j = 0;
         HashMap<Character,Integer> map = new HashMap<>();
-        int max = Integer.MIN_VALUE;
+        int max = 0;
         int maxWin = 0;
         while(j<s.length()){
             map.put(s.charAt(j),map.getOrDefault(s.charAt(j),0)+1);
