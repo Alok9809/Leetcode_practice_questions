@@ -1,33 +1,29 @@
 class Solution {
     public int[] twoSum(int[] numbers, int target) {
-        int left = 0;
-        int right = numbers.length-1;
-        
-
-        while(left<right){
-            if(numbers[left]+numbers[right]==target){
-                return new int[]{left+1,right+1};
+        for(int i = 0;i<numbers.length;i++){
+            int left = target-numbers[i];
+            int index = binarySearch(numbers,left,i);
+            if(index!=-1){
+                return new int[]{Math.min(i,index)+1,Math.max(i,index)+1};
             }
-            if(numbers[left]+numbers[right]>target){
-                
-                right--;
-            }
-            if(numbers[left]+numbers[right]<target){
-                
-                left++;
-            }
-            
-
         }
         return new int[]{};
-        // HashMap<Integer,Integer> map = new HashMap<>();
-        // for(int i =0;i<numbers.length;i++){
-        //     int left = target-numbers[i];
-        //     if(map.containsKey(left)){
-        //         return new int[]{map.get(left)+1,i+1};
-        //     }
-        //     map.put(numbers[i],i);
-        // }
-        // return new int[]{};
+    }
+    public static int binarySearch(int[] numbers,int target,int f){
+        int start = 0,end = numbers.length-1;
+            while(start<=end){
+                int mid = start+(end-start)/2;
+                if(numbers[mid]==target&&mid!=f){
+                    return mid;
+                }else if(numbers[mid]<target){
+                    start = mid+1;
+
+                }else{
+                    end = mid-1;
+                }
+                
+                
+            }
+            return -1;
     }
 }
