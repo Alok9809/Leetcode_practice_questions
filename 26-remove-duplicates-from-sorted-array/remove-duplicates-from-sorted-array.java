@@ -3,14 +3,15 @@ class Solution {
         
         int a = 0;
         int b = 1;
-        int ok = 1;
+        
 
         while(b<nums.length){
             if(nums[a]!=nums[b]){
-                nums[ok++] = nums[b];
+                
+                nums[++a] = nums[b];
             }
-            a++;b++;
+            b++;
         }
-        return ok;
+        return a+1;
     }
 }
