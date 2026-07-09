@@ -1,22 +1,32 @@
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        if(s.isEmpty()) return 0;
-        int start = 0,end = 0;
-        int freq[] = new int[128];
-        int max = Integer.MIN_VALUE;
-        
-        
-        while(end<s.length()){
-            freq[s.charAt(end)]++;
-            while(freq[s.charAt(end)]>1){
-                freq[s.charAt(start)]--;
-                start++;
-                
+        int n = s.length();
+        int maxLen = 0;
 
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                if (isUnique(s, i, j)) {
+                    maxLen = Math.max(maxLen, j - i + 1);
+                }else{
+                    break;
+                }
             }
-            max = Math.max(max,end-start+1);
-            end++;
         }
-        return max;
+
+        return maxLen;
+    }
+
+    private boolean isUnique(String s, int start, int end) {
+        boolean[] visited = new boolean[128];
+
+        for (int i = start; i <= end; i++) {
+            char ch = s.charAt(i);
+            if (visited[ch]) {
+                return false;
+            }
+            visited[ch] = true;
+        }
+
+        return true;
     }
 }
